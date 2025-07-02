@@ -19,8 +19,8 @@ $totalWrapperPadding: 20px;
   transition: padding .2s ease-in-out;
 
   &.touched.valid:not(.focused):not(.error) {
-    padding-top: $totalWrapperPadding / 2;
-    padding-bottom: $totalWrapperPadding / 2;
+    padding-top: calc($totalWrapperPadding / 2);
+    padding-bottom: calc($totalWrapperPadding / 2);
 
     .icon-wrapper {
       transform: translateY(-50%);
