@@ -37,7 +37,7 @@ const BaseSelect = ({
         !invalid && controlStyles.valid
       )}
     >
-      {label && (
+      {message && (
         <label className={controlStyles.label}>
           {message}
         </label>
