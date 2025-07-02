@@ -173,7 +173,7 @@ function SignupForm() {
         <BaseInput
           name="dateOfBirth"
           label="Date of Birth"
-          placeholder="DD/MM/YYYY"
+          placeholder="DD-MM-YYYY"
           methods={{
             control,
             trigger,
