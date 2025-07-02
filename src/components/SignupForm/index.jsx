@@ -171,6 +171,7 @@ function SignupForm() {
         />
 
         <BaseInput
+          inputMode="numeric"
           name="dateOfBirth"
           label="Date of Birth"
           placeholder="DD-MM-YYYY"
