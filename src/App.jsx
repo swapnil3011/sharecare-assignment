@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="main-container">
       <h3 className="heading">
-        <img src="/ninja-hattori.png" alt="logo" />
+        <img src="ninja-hattori.png" alt="logo" />
         &nbsp;&nbsp;QualityHealth
       </h3>
 
