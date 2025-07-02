@@ -20,6 +20,7 @@ const BaseSelect = ({
     message,
     error,
     isTouched,
+    isDirty,
     invalid,
     handleFocus,
     handleBlur,
@@ -54,7 +55,7 @@ const BaseSelect = ({
         {...rest}
       >
         <option value="" disabled hidden>
-          {placeholder}
+          {!isDirty && (isFocused || error) ? placeholder : ''}
         </option>
         {options.map((opt) => (
           <option key={opt.value} value={opt.value}>

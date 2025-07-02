@@ -7,7 +7,12 @@ export function useControlField({ name, control, rules = {}, label, trigger }) {
 
   const {
     field,
-    fieldState: { error, invalid, isTouched },
+    fieldState: {
+      error,
+      invalid,
+      isTouched,
+      isDirty,
+    },
   } = useController({ name, control, rules });
 
   const handleFocus = useCallback(() => {
@@ -32,6 +37,7 @@ export function useControlField({ name, control, rules = {}, label, trigger }) {
     message,
     error,
     isTouched,
+    isDirty,
     invalid,
     handleFocus,
     handleBlur,

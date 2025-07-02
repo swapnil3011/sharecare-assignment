@@ -14,6 +14,7 @@ function BaseInput({
   type = 'text',
   disabled = false,
   className = '',
+  placeholder,
   ...rest
 }) {
   const {
@@ -22,6 +23,7 @@ function BaseInput({
     message,
     error,
     isTouched,
+    isDirty,
     invalid,
     handleFocus,
     handleBlur,
@@ -47,6 +49,7 @@ function BaseInput({
 
       <div className={controlStyles['input-icon-wrapper']}>
         <input
+          placeholder={!isDirty && (isFocused || error) ? placeholder : ''}
           type={type}
           disabled={disabled}
           {...field}

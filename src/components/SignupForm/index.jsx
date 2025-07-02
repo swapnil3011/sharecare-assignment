@@ -74,6 +74,7 @@ function SignupForm() {
         <BaseInput
           name="fullName"
           label="Full Name"
+          placeholder="Enter first and last name"
           methods={{
             control,
             trigger,
@@ -87,6 +88,7 @@ function SignupForm() {
         <BaseInput
           name="mailingAddress"
           label="Mailing Address"
+          placeholder="Enter your mailing address"
           methods={{
             control,
             trigger,
@@ -98,6 +100,7 @@ function SignupForm() {
           <BaseInput
             name="city"
             label="City"
+            placeholder="Enter city"
             methods={{
               control,
               trigger,
@@ -108,6 +111,7 @@ function SignupForm() {
           <BaseInput
             name="state"
             label="State"
+            placeholder="Enter state"
             methods={{
               control,
               trigger,
@@ -122,6 +126,7 @@ function SignupForm() {
           inputMode="tel"
           name="mobileNumber"
           label="Mobile Number"
+          placeholder="Enter 10-digit mobile number"
           autoComplete="mobile"
           methods={{
             control,
@@ -146,6 +151,7 @@ function SignupForm() {
         <BaseInput
           name="dateOfBirth"
           label="Date of Birth"
+          placeholder="DD/MM/YYYY"
           methods={{
             control,
             trigger,
@@ -176,6 +182,7 @@ function SignupForm() {
         <BaseInput
           name="email"
           label="Email"
+          placeholder="Enter your email address"
           autoComplete="email"
           methods={{
             control,

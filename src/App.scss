@@ -49,6 +49,7 @@ hr {
 }
 
 .main-container {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   column-gap: 16px;
@@ -57,14 +58,18 @@ hr {
   padding: 0;
 
   .heading {
-    height: 60px;
-    width: 100%;
     position: fixed;
+    z-index: 1000;
+
     display: flex;
     align-items: center;
+
+    width: 100%;
+    height: 60px;
     padding-left: 8px;
+
     background-color: #fff;
-    z-index: 1000;
+    box-shadow: 4px 12px 12px -12px rgba(#ccc, .8);
   }
 
   .main-banner {
@@ -82,8 +87,8 @@ hr {
     }
 
     .heading {
-      right: 0;
       top: 0;
+      right: 0;
       left: 50%;
       width: initial;
     }
@@ -100,10 +105,10 @@ hr {
     }
 
     .form-section {
-      margin-top: 20px;
-      max-height: 100%;;
+      overflow-y: scroll;;
       align-self: baseline;
-      overflow-y: scroll;
+      max-height: 100%;
+      margin-top: 60px;
     }
   }
 }
