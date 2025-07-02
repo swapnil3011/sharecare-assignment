@@ -32,6 +32,10 @@ const BaseSelect = ({
           </option>
         ))}
       </select>
+
+      <span className={controlStyles['icon-wrapper']}>
+        <div className="caret-down" style={{ marginRight: '8px' }} />
+      </span>
     </>
   )
 
