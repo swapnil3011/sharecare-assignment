@@ -56,8 +56,19 @@ hr {
   width: 100%;
   padding: 0;
 
-  > * {
-    flex-basis: 50%;
+  .heading {
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    background-color: #fff;
+    z-index: 1000;
+  }
+
+  .main-banner {
+    margin-top: 60px;
   }
 }
 
@@ -65,13 +76,34 @@ hr {
   .main-container {
     flex-direction: row;
     height: 100dvh;
-    padding: 16px;
+
+    > * {
+      flex-basis: 50%;
+    }
+
+    .heading {
+      right: 0;
+      top: 0;
+      left: 50%;
+      width: initial;
+    }
 
     .main-banner {
+      margin-top: initial;
+      padding: 16px;
+      padding-right: 0;
+
       img {
         object-fit: fill !important;
         object-position: center !important;
       }
+    }
+
+    .form-section {
+      margin-top: 20px;
+      max-height: 100%;;
+      align-self: baseline;
+      overflow-y: scroll;
     }
   }
 }
@@ -88,6 +120,10 @@ hr {
 
 @media screen and (min-width: 1080px) {
   .main-container {
+    .heading {
+      left: 60%;
+    }
+
     .form-section {
       flex-basis: 40%;
     }
