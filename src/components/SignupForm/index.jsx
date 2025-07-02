@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import iconBook from '../../assets/icon-book.svg'
 import iconMail from '../../assets/icon-mail.svg'
 
-import controlStyles from '../BaseControlElement.module.scss';
+import controlStyles from '../BaseControl/styles.module.scss';
 import styles from './styles.module.scss';
 
 import Image from '../../components/Image'

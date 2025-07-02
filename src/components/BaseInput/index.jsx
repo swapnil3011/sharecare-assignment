@@ -1,10 +1,9 @@
-import clsx from 'clsx';
-
-import controlStyles from '../BaseControlElement.module.scss';
+import controlStyles from '../BaseControl/styles.module.scss';
 
 import IconPencil from '../../assets/icon-pencil.jsx';
 import IconTick from '../../assets/icon-tick.jsx';
-import { useControlField } from '../../hooks/useControlField.jsx';
+
+import BaseControl from '../BaseControl';
 
 function BaseInput({
   name,
@@ -17,62 +16,54 @@ function BaseInput({
   placeholder,
   ...rest
 }) {
-  const {
+  const renderControl = ({
     field,
-    isFocused,
-    message,
-    error,
-    isTouched,
+    onFocus,
+    onBlur,
+    onChange,
     isDirty,
+    isTouched,
+    isFocused,
     invalid,
-    handleFocus,
-    handleBlur,
-    handleChange,
-  } = useControlField({ name, control, rules, label, trigger });
+    error,
+  }) => (
+    <div className={controlStyles['input-icon-wrapper']}>
+      <input
+        placeholder={!isDirty && (isFocused || error) ? placeholder : ''}
+        type={type}
+        {...field}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onChange={onChange}
+        className={controlStyles.input}
+        {...rest}
+      />
+
+      {
+        !isTouched || invalid || isFocused ? (
+          <span className={controlStyles['icon-wrapper']}>
+            <IconPencil color={(error && !isFocused && '#DE1E1E') || undefined} />
+          </span>
+        ) : (
+          <span className={controlStyles['icon-wrapper']}>
+            <IconTick />
+          </span>
+        )
+      }
+    </div>
+  )
 
   return (
-    <div
-      className={clsx(
-        className,
-        controlStyles.wrapper,
-        error && controlStyles['error'],
-        isFocused && controlStyles['focused'],
-        isTouched && controlStyles['touched'],
-        !invalid && controlStyles['valid']
-      )}
-    >
-      {message && (
-        <label className={controlStyles.label}>
-          {message}
-        </label>
-      )}
-
-      <div className={controlStyles['input-icon-wrapper']}>
-        <input
-          placeholder={!isDirty && (isFocused || error) ? placeholder : ''}
-          type={type}
-          disabled={disabled}
-          {...field}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onChange={handleChange}
-          className={controlStyles.input}
-          {...rest}
-        />
-
-        {
-          !isTouched || invalid || isFocused ? (
-            <span className={controlStyles['icon-wrapper']}>
-              <IconPencil color={(error && !isFocused && '#DE1E1E') || undefined} />
-            </span>
-          ) : (
-            <span className={controlStyles['icon-wrapper']}>
-              <IconTick />
-            </span>
-          )
-        }
-      </div>
-    </div>
+    <BaseControl
+      className={className}
+      name={name}
+      label={label}
+      control={control}
+      trigger={trigger}
+      methods={{ control, trigger }}
+      rules = {rules}
+      renderControl={renderControl}
+    />
   );
 }
 
