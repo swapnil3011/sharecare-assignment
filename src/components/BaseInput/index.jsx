@@ -1,11 +1,10 @@
 import clsx from 'clsx';
-import { useState } from 'react';
-import { useController } from 'react-hook-form';
 
 import controlStyles from '../BaseControlElement.module.scss';
 
 import IconPencil from '../../assets/icon-pencil.jsx';
 import IconTick from '../../assets/icon-tick.jsx';
+import { useControlField } from '../../hooks/useControlField.jsx';
 
 function BaseInput({
   name,
@@ -17,41 +16,17 @@ function BaseInput({
   className = '',
   ...rest
 }) {
-  const [isFocused, setIsFocused] = useState(false);
-  const [message, setMessage] = useState(label);
-
   const {
     field,
-    fieldState,
-  } = useController({
-    name,
-    control,
-    rules,
-  });
-
-
-  const { error, invalid, isTouched } = fieldState;
-
-  const handleFocus = () => {
-    setIsFocused(true);
-    trigger(name);
-    setMessage(label);
-  };
-
-  const handleBlur = () => {
-    field.onBlur();
-    setIsFocused(false);
-
-    if (invalid) {
-      setMessage(error?.message || label);
-    } else {
-      setMessage('')
-    }
-  };
-
-  const handleChange = (e) => {
-    field.onChange(e);
-  };
+    isFocused,
+    message,
+    error,
+    isTouched,
+    invalid,
+    handleFocus,
+    handleBlur,
+    handleChange,
+  } = useControlField({ name, control, rules, label, trigger });
 
   return (
     <div
