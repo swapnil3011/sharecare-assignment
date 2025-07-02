@@ -51,6 +51,28 @@ function SignupForm() {
     setIndex(index + 1);
   };
 
+  function isValidPastDate(dateStr) {
+    const dateRegex = /^(\d{2})-(\d{2})-(\d{4})$/;
+    const match = dateStr.match(dateRegex);
+    if (!match) return 'Please enter date in DD-MM-YYYY format';
+
+    const [_, day, month, year] = match.map(Number);
+    const date = new Date(year, month - 1, day);
+
+    const isValidDate =
+      date.getFullYear() === year &&
+      date.getMonth() === month - 1 &&
+      date.getDate() === day;
+
+    if (!isValidDate) return 'Invalid date';
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    return date < today || 'DOB should be a valid past date';
+  }
+
+
   return (
     <form
       key={index}
@@ -156,7 +178,10 @@ function SignupForm() {
             control,
             trigger,
           }}
-          rules={{ required: 'DOB is required' }}
+          rules={{
+            required: 'DOB is required',
+            validate: isValidPastDate,
+          }}
 
         />
 
