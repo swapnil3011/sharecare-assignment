@@ -21,6 +21,7 @@ const BaseControl = ({
     isTouched,
     isDirty,
     invalid,
+    forceError,
     handleFocus,
     handleBlur,
     handleChange,
@@ -32,6 +33,7 @@ const BaseControl = ({
         className,
         controlStyles.wrapper,
         error && controlStyles.error,
+        forceError && controlStyles['force-error'],
         isFocused && controlStyles.focused,
         isTouched && controlStyles.touched,
         !invalid && controlStyles.valid
@@ -48,6 +50,7 @@ const BaseControl = ({
         isFocused,
         invalid,
         error,
+        forceError,
       })}
     </div>
   );

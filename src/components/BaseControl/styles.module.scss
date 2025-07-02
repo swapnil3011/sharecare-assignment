@@ -79,10 +79,9 @@ $totalWrapperPadding: 20px;
     .label {
       color: #de1e1e;
     }
-
   }
 
-  &.focused {
+  &.focused:not(.force-error) {
     border-color: #06d146;
     background-color: initial;
 

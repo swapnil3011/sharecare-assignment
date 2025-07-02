@@ -26,6 +26,7 @@ function BaseInput({
     isFocused,
     invalid,
     error,
+    forceError,
   }) => (
     <div className={controlStyles['input-icon-wrapper']}>
       <input
@@ -42,7 +43,7 @@ function BaseInput({
       {
         !isTouched || invalid || isFocused ? (
           <span className={controlStyles['icon-wrapper']}>
-            <IconPencil color={(error && !isFocused && '#DE1E1E') || undefined} />
+            <IconPencil color={((error && (forceError || !isFocused)) && '#DE1E1E') || undefined} />
           </span>
         ) : (
           <span className={controlStyles['icon-wrapper']}>

@@ -1,9 +1,14 @@
 import { useController } from 'react-hook-form';
-import { useState, useCallback } from 'react';
+import {
+  useState,
+  useCallback,
+  useEffect,
+} from 'react';
 
 export function useControlField({ name, control, rules = {}, label, trigger }) {
   const [isFocused, setIsFocused] = useState(false);
   const [message, setMessage] = useState(label);
+  const [forceError, setForceError] = useState(false);
 
   const {
     field,
@@ -13,9 +18,28 @@ export function useControlField({ name, control, rules = {}, label, trigger }) {
       isTouched,
       isDirty,
     },
+    formState: { isSubmitting },
   } = useController({ name, control, rules });
 
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (isSubmitting) {
+        setForceError(true);
+      }
+    });
+  }, [isSubmitting]);
+
+  useEffect(() => {
+    if (error && (forceError || !isFocused)) {
+      setMessage(error?.message);
+    } else if (error && isFocused) {
+      setMessage(label);
+    }
+  }, [error, forceError]);
+
   const handleFocus = useCallback(() => {
+    setForceError(false);
     setIsFocused(true);
     trigger?.(name);
     setMessage(label);
@@ -28,6 +52,7 @@ export function useControlField({ name, control, rules = {}, label, trigger }) {
   }, [field, error, invalid, label]);
 
   const handleChange = useCallback((e) => {
+    setForceError(false);
     field.onChange(e);
   }, [field]);
 
@@ -39,6 +64,7 @@ export function useControlField({ name, control, rules = {}, label, trigger }) {
     isTouched,
     isDirty,
     invalid,
+    forceError,
     handleFocus,
     handleBlur,
     handleChange,
