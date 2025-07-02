@@ -176,11 +176,11 @@ hr {
 }
 
 .caret-down {
+  transform: translateY(-50%) rotate(45deg);
+
   width: 10px;
   height: 10px;
   border: none;
-
   border-right: 2px solid #333;
   border-bottom: 2px solid #333;
-  transform: translateY(-50%) rotate(45deg);
 }

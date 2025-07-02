@@ -118,7 +118,6 @@ $totalWrapperPadding: 20px;
     transition: transform .2s ease-in-out;
   }
 
-  &.touched,
   &.focused {
     .icon-wrapper {
       transform: translateY(0);
